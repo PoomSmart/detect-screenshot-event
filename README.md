@@ -1,10 +1,6 @@
 # PoC Detect Screenshot events on iOS
 
-_Tested on iOS 12 and iOS 13_
-
-## Problem in iOS 14
-
-It seems that SpringBoard only fires the "after taking screenshot" event, and not of ID `7`, but `4`. More researchs are required.
+_Tested on iOS 12, iOS 13 and iOS 14_
 
 This makes use of a private accessibility-oriented SpringBoard server `AXSpringBoardServer` inside the private framework `AccessibilityUtilities.framework`, by instantiating the server in a non-SpringBoard process and supplying a callback function to detect the event type - not limited to screenshot events (`6` when screenshot will fire and `7` when screenshot did fire).
 
