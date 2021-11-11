@@ -41,7 +41,7 @@ void (*AXPerformBlockAsynchronouslyOnMainThread)(void (^)(void));
 	} else {
 		// NEVER register SpringBoard action handlers inside SpringBoard itself
 		dlopen("/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities", RTLD_NOW);
-		MSImageRef axc = MSGetImageByName("/System/Library/PrivateFrameworks/AXCoreUtilities/AXCoreUtilities");
+		MSImageRef axc = MSGetImageByName("/System/Library/PrivateFrameworks/AXCoreUtilities.framework/AXCoreUtilities");
 		AXPerformBlockAsynchronouslyOnMainThread = (void (*)(void (^)(void)))_PSFindSymbolCallable(axc, "_AXPerformBlockAsynchronouslyOnMainThread");
 		AXSpringBoardServer *server = [%c(AXSpringBoardServer) server];
 		[server registerSpringBoardActionHandler:^(int eventType) {
